@@ -11,6 +11,16 @@ provider "azurerm" {
   features {}
 }
 
+# Define the backend configuration for Azure Storage Account
+terraform {
+  backend "azurerm" {
+    resource_group_name   = "Terraform-Backend"
+    storage_account_name  = "terraformstorage122"
+    container_name        = "terraformcontainer122"
+    key                    = "terraform.tfstate"
+  }
+}
+
 resource "azurerm_resource_group" "rg" {
   name     = var.resource_group_name
   location = var.location
